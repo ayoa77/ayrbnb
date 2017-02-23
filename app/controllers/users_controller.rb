@@ -1,7 +1,7 @@
 class UsersController < Clearance::UsersController
   def new
     @user = User.new
-    # render template: "users/new"
+     render template: "users/new"
   end
 
   def create
@@ -17,7 +17,7 @@ class UsersController < Clearance::UsersController
   def show
     if current_user != nil
     @user = User.find_by(id: current_user.id)
-    render :"users/show"
+    render template: "users/show"
     else
     redirect_to new_user_path
     end

@@ -2,5 +2,6 @@
 <p>Find me in app/views/listings/index.html.erb</p>
 
 <% @listings.each do |listing| %>
-<%= listing.title %>
+<p> <%=link_to "#{listing.title}", listing_path(listing)%> </p>
 <% end %>
+<p><%=link_to "Home", user_path(current_user)%> </p>

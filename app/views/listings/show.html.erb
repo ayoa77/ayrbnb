@@ -1,12 +1,12 @@
-<h2><%= @listing.title %></h2>
-<%= @listing.description %>
-<%= @listing.price %>
+<h2><%= @listing.title %> <%= @listing.price %></h2>
+<p><%= @listing.description %></p>
 <%= @listing.accomodation %>
-<%= @listing.kind %>
-<%= @listing.address %>
+<p><%= @listing.kind %></p>
+<p><%= @listing.address %>
 <%= @listing.city %>
-<%= @listing.country %>
-<%= @listing.guest %>
-<%= @listing.bedrooms %>
-<%= @listing.beds %>
-<%= @listing.bathrooms %>
+<%= @listing.country %></p>
+<p>Maximum Guests <%= @listing.guest %></p>
+<p>Bedrooms <%= @listing.bedrooms %></p>
+<p>Beds <%= @listing.beds %></p>
+<p>Bathrooms <%= @listing.bathrooms %></p>
+<p><%=link_to "Home", user_path(current_user)%> <%=link_to "Index", listings_path%></p>
