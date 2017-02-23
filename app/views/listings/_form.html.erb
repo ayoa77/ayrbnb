@@ -1,0 +1,61 @@
+<%= form_for @listing do |form| %>
+<div class="text-field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+</div>
+
+<div class="text-field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+</div>
+
+<div class="text-field">
+    <%= form.label :type %>
+    <%= form.text_area :type %>
+</div>
+
+<div class="text-field">
+    <%= form.label :accomodation %>
+    <%= form.text_area :accomodation %>
+</div>
+
+<div class="text-field">
+    <%= form.label :country %>
+    <%= form.text_area :country %>
+</div>
+
+<div class="text-field">
+  <%= form.label :city %>
+    <%= form.text_area :city %>
+</div>
+
+<div class="text-field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+</div>
+
+<div class="number-field">
+    <%= form.label :guest %>
+    <%= form.number_field :guest, in: 1...17, value: 1%>
+</div>
+
+<div class="number-field">
+    <%= form.label :bedrooms %>
+    <%= form.number_field :bedrooms, in: 0...17, value: 0%>
+</div>
+
+<div class="number-field">
+    <%= form.label :beds %>
+    <%= form.number_field :beds, in: 1...17, value: 1 %>
+</div>
+
+<div class="number-field">
+    <%= form.label :bathrooms %>
+    <%= form.number_field :bathrooms, in: 1...17, step: 0.5 %>
+</div>
+
+
+<div class="submit-field">
+    <%= form.submit %>
+</div>
+<% end %>

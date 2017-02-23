@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'listings/index'
+
   get 'pages/index'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
+  resources :listings, controller: "listings"
   resources :users
   resources :users, controller: "users", only: [:create] do
     resource :password,

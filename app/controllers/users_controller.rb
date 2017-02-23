@@ -1,8 +1,8 @@
 class UsersController < Clearance::UsersController
-  # def new
-  #   @user = User.new
-  #   render template: "users/new"
-  # end
+  def new
+    @user = User.new
+    # render template: "users/new"
+  end
 
   def create
     @user = User.new(user_params)
@@ -15,15 +15,20 @@ class UsersController < Clearance::UsersController
   end
 
   def show
-
+    if current_user != nil
+    @user = User.find_by(id: current_user.id)
+    render :"users/show"
+    else
+    redirect_to new_user_path
+    end
   end
 
   def edit
-@user = User.find_by(id: current_user.id)
+  @user = User.find_by(id: current_user.id)
   end
 
   private
   def user_params
-    params[:user].permit(:email, :username, :password)
+     params[:user].permit(:email, :username, :password)
   end
 end

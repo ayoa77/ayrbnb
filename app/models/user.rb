@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :authentications, dependent: :destroy
+    has_many :listings, dependent: :destroy
     include Clearance::User
 
     def self.authenticate(username, password)
@@ -9,7 +10,12 @@ class User < ApplicationRecord
       end
 
     def password_optional?
+       #testing for facebook authorization
+      if defined? auth_hash != nil
         true
+      else
+        false
+      end
     end
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
