@@ -6,9 +6,9 @@ class ListingsController < ApplicationController
 
     def create
       @listing = current_user.listings.new(listing_params)
-
+      @tags = params[:listing][:tags_ids].reject(&:empty?)
       if @listing.save
-        sign_in @user
+      @listing.tag_ids = @tags if @tags
       redirect_to listing_path(@listing)
       else
         render template: "listings/new"
@@ -36,6 +36,6 @@ class ListingsController < ApplicationController
     private
 
     def listing_params
-      params[:listing].permit(:accomodation, :kind, :title, :description, :address, :city, :country, :price, :bedrooms, :beds, :bathrooms)
+      params[:listing].permit(:guest, :accomodation, :kind, :title, :description, :address, :city, :country, :price, :bedrooms, :beds, :bathrooms, :start_date, :end_date)
     end
 end

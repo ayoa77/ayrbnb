@@ -11,11 +11,11 @@ class User < ApplicationRecord
 
     def password_optional?
        #testing for facebook authorization
-      if defined? auth_hash != nil
-        true
-      else
-        false
-      end
+       if !self.authentications.nil?
+         true
+       else
+         false
+       end
     end
 
     def self.create_with_auth_and_hash(authentication, auth_hash)

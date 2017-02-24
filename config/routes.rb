@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
+  resources :tags, controller: "tags"
+  resource :listingtags, only: [:create]
   resources :listings, controller: "listings"
   resources :users
   resources :users, controller: "users", only: [:create] do

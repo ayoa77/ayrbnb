@@ -9,7 +9,7 @@
     <% if signed_in? %>
       <%= current_user.username %>
       <%= button_to "Sign out", sign_out_path, method: :delete %>
-    <% elsif request.path_info.include?( '/sign_in' )  %>
+    <% elsif request.path_info.include?( '/sign_in') || request.path_info.include?( '/session')  %>
       <%= link_to "Sign in with Facebook", "/auth/facebook" %>
     <% else %>
       <%= link_to "Sign in with Facebook", "/auth/facebook" %>

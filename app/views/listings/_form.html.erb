@@ -30,17 +30,17 @@
 </div>
 
 <div class="text-field">
-    <%= form.label "street number, name, and zip code" %>
+    <%= form.label "street number, street name, and zip code" %>
     <%= form.text_area :address %>
 </div>
 
 <div class="number-field">
-    <%= form.label "price per day" %>
-    <%= form.number_field :price, in: 5...1000, value: 5%>
+    <%= form.label "Price Per Day" %>
+    <%= form.number_field :price, in: 5...1000, step: 0.01 %>
 </div>
 
 <div class="number-field">
-    <%= form.label "possible amount of guests"%>
+    <%= form.label "possible amount of guests" %>
     <%= form.number_field :guest, in: 1...17, value: 1%>
 </div>
 
@@ -58,6 +58,22 @@
     <%= form.label :bathrooms %>
     <%= form.number_field :bathrooms, in: 1...17, step: 0.5 %>
 </div>
+
+<div class="number-field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+</div>
+
+<div class="number-field">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+</div>
+
+<div class="check-box-field">
+  <% Tag.all.each do |tag| %>
+  <%= check_box_tag "listing[tag_ids][]", tag.id %>
+  <%= tag.name %><br>
+  <% end %>
 
 
 <div class="submit-field">
