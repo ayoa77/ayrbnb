@@ -28,6 +28,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+# Use carrierwave to handle image uploading
+gem 'carrierwave'
 # Use clearance for authentication library
 gem 'clearance'
 # Use ActiveModel has_secure_password

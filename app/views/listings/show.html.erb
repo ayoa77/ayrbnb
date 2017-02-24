@@ -9,4 +9,13 @@
 <p>Bedrooms <%= @listing.bedrooms %></p>
 <p>Beds <%= @listing.beds %></p>
 <p>Bathrooms <%= @listing.bathrooms %></p>
+<p>Tags</p>
+ <% @listing.tags.each do |tag| %>
+  <%= tag.name %><br>
+  <% end %>
+
+<% if current_user %>
 <p><%=link_to "Home", user_path(current_user)%> <%=link_to "Index", listings_path%></p>
+<% else %>
+<%= link_to t(".sign_up"), sign_up_path %>
+<%end%>
