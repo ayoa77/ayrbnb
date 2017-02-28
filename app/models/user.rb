@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :authentications, dependent: :destroy
     has_many :listings, dependent: :destroy
+    has_many :reservations
     include Clearance::User
 
     def self.authenticate(username, password)

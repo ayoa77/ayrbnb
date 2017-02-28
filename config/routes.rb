@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tags, controller: "tags"
   resource :listingtags, only: [:create]
   resources :listings, controller: "listings"
+  resources :reservations, controller: "reservations", only: [:create, :destroy, :index]
   resources :users
   resources :users, controller: "users", only: [:create] do
     resource :password,

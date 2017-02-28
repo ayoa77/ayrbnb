@@ -4,7 +4,8 @@ git_source(:github) do |repo_name|
     repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
     "https://github.com/#{repo_name}.git"
 end
-
+# Use carrierwave to handle image uploading
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use postgresql as the database for Active Record
@@ -19,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem "mini_magick"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -28,8 +30,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use carrierwave to handle image uploading
-gem 'carrierwave'
+gem 'fog', require: 'fog/aws'
+# Use figaro for hiding secret keys
+gem 'figaro'
 # Use clearance for authentication library
 gem 'clearance'
 # Use ActiveModel has_secure_password
@@ -37,8 +40,7 @@ gem 'clearance'
 # Use omniauth to allow users to signup/signin using facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
-# Use figaro for hiding secret keys
-gem 'figaro'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

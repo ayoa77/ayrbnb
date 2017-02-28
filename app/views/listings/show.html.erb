@@ -1,21 +1,46 @@
-<h2><%= @listing.title %> <%= @listing.price %></h2>
+<h2><%= @listing.title %>
+    <%= @listing.price %></h2>
+<div class="carousel-inner">
+    <div class="item active">
+      <% if @listing.photos.present? %>
+        <%=image_tag @listing.photos.first, {:class => "img-response"} %>
+    </div>
+    <% @listing.photos.shift %>
+    <% @listing.photos.each do |photo| %>
+    <div class="item">
+        <%= image_tag photo, {:class =>"img-response"} %>
+    </div>
+    <%end%>
+    </div>
+    <% end %>
+
 <p><%= @listing.description %></p>
 <%= @listing.accomodation %>
 <p><%= @listing.kind %></p>
 <p><%= @listing.address %>
-<%= @listing.city %>
-<%= @listing.country %></p>
-<p>Maximum Guests <%= @listing.guest %></p>
-<p>Bedrooms <%= @listing.bedrooms %></p>
-<p>Beds <%= @listing.beds %></p>
-<p>Bathrooms <%= @listing.bathrooms %></p>
+    <%= @listing.city %>
+    <%= @listing.country %></p>
+<p>Maximum Guests
+    <%= @listing.guest %></p>
+<p>Bedrooms
+    <%= @listing.bedrooms %></p>
+<p>Beds
+    <%= @listing.beds %></p>
+<p>Bathrooms
+    <%= @listing.bathrooms %></p>
 <p>Tags</p>
- <% @listing.tags.each do |tag| %>
-  <%= tag.name %><br>
-  <% end %>
-
+<% @listing.tags.each do |tag| %>
+<%= tag.name %><br>
+<% end %>
+  <%= form_for @reservation do |form| %>
+  <%= form.hidden_field :listing_id, :value => @listing.id %>
+<%= render partial: '/reservations/form', object: form %>
+<% end %>
 <% if current_user %>
-<p><%=link_to "Home", user_path(current_user)%> <%=link_to "Index", listings_path%></p>
+<p><%=link_to "Home", user_path(current_user)%>
+    <%=link_to "Index", listings_path%>
+    <%=link_to "Update", edit_listing_path(@listing) %>
+</p>
 <% else %>
 <%= link_to t(".sign_up"), sign_up_path %>
 <%end%>
