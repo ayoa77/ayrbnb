@@ -8,6 +8,7 @@ class UsersController < Clearance::UsersController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
+      UserNotifier.send_signup_email(@user).deliver
       redirect_back_or url_after_create
     else
       render template: "users/new"

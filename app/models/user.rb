@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :reservations
     include Clearance::User
 
+
+
     def self.authenticate(username, password)
         if user = User.find_by(username: username)
             user if password.present? && user.authenticated?(password)

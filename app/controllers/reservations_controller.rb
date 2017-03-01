@@ -6,7 +6,6 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = current_user.reservations.new(reservation_params)
-        byebug
         # @resvervation.overlap(:check_in, :check_out, current_listing.reservations.check_in, current_listing.reservations.check_out)
         if @reservation.save
             redirect_to @reservation.listing      #listings_reservation_path(params[:listing_id])
